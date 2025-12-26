@@ -1,4 +1,6 @@
 backend:
   name: github
-  repo: jeanmartin/boulangerie
+  repo: toulouse-pro/pro
   branch: main
+  auth_type: pkce
+  client_id: 5574f6f724a45836ed4cfb252c8c1b14c17ace55
