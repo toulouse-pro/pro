@@ -6,7 +6,7 @@ backend:
   client_id: Iv23li8tKEa2ZqC4ngXG
 
 media_folder: "assets/images"
-public_folder: "/assets/images"
+public_folder: "/pro/assets/images"
 
 collections:
   - name: "site"
