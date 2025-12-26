@@ -4,3 +4,41 @@ backend:
   branch: main
   auth_type: pkce
   client_id: 5574f6f724a45836ed4cfb252c8c1b14c17ace55
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "site"
+    label: "Website Content"
+    files:
+      - file: "content/site.json"
+        label: "Main Content"
+        name: "main"
+        fields:
+          - label: "Business Name"
+            name: "business_name"
+            widget: "string"
+
+          - label: "Tagline"
+            name: "tagline"
+            widget: "string"
+
+          - label: "Phone"
+            name: "phone"
+            widget: "string"
+
+          - label: "Email"
+            name: "email"
+            widget: "string"
+
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "string" }
+
+          - label: "Opening Hours"
+            name: "opening_hours"
+            widget: "list"
