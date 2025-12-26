@@ -16,29 +16,16 @@ collections:
         label: "Main Content"
         name: "main"
         fields:
-          - label: "Business Name"
-            name: "business_name"
-            widget: "string"
-
-          - label: "Tagline"
-            name: "tagline"
-            widget: "string"
-
-          - label: "Phone"
-            name: "phone"
-            widget: "string"
-
-          - label: "Email"
-            name: "email"
-            widget: "string"
-
+          - { label: "Business Name", name: "business_name", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
           - label: "Services"
             name: "services"
             widget: "list"
             fields:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "string" }
-
           - label: "Opening Hours"
             name: "opening_hours"
             widget: "list"
