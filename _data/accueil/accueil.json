@@ -1,0 +1,9 @@
+{
+  "title": "Mon Restaurant",
+  "subtitle": "Produits et services de qualité, conçus avec passion et savoir-faire — votre satisfaction au cœur de notre engagement depuis 1907.",
+  "image": "../../images/Front.jpg",
+  "button1_text": "Menu",
+  "button1_link": "#menu",
+  "button2_text": "Réserver",
+  "button2_link": "#reserver"
+}

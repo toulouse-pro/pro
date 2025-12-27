@@ -1,10 +1,130 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Admin</title>
-  </head>
-  <body>
-    <script src="https://unpkg.com/decap-cms@latest/dist/decap-cms.js"></script>
-  </body>
-</html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager</title>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Load Accueil
+    fetch('_data/accueil/accueil.json')
+      .then(response => response.json())
+      .then(data => {
+        document.querySelector('.hero .hero-right img').src = data.image;
+        document.querySelector('.hero .lead').textContent = data.subtitle;
+        document.querySelector('.btn.secondary').textContent = data.button1_text;
+      });
+
+    // Load Avis
+    fetch('_data/avis/avis.json')
+      .then(response => response.json())
+      .then(reviews => {
+        const container = document.querySelector('#avis .reviews-container');
+        container.innerHTML = '';
+        reviews.forEach(review => {
+          container.innerHTML += `
+            <div class="review">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <strong>${review.name}</strong><span class="stars">${review.rating}</span>
+              </div>
+              <p class="muted" style="margin:8px 0 0;">${review.comment}</p>
+            </div>
+          `;
+        });
+      });
+
+    // Load Horaires
+    fetch('_data/horaires/horaires.json')
+      .then(response => response.json())
+      .then(hours => {
+        const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+        const table = document.querySelector('#horaires table');
+        table.innerHTML = '';
+        days.forEach(day => {
+          table.innerHTML += `
+            <tr>
+              <td>${day.charAt(0).toUpperCase() + day.slice(1)}</td>
+              <td>${hours[day] || 'Fermé'}</td>
+            </tr>
+          `;
+        });
+        document.querySelector('#horaires-desc').textContent = hours.note || '';
+      });
+
+    // Load Photos
+    fetch('_data/photos/photos.json')
+      .then(response => response.json())
+      .then(photos => {
+        const gallery = document.querySelector('#photos .gallery');
+        gallery.innerHTML = '';
+        photos.forEach(photo => {
+          gallery.innerHTML += `
+            <img loading="lazy" src="${photo.image}" alt="${photo.caption || ''}" class="popup-img">
+          `;
+        });
+      });
+
+    // Load Menu
+    fetch('_data/menu/menu.json')
+      .then(response => response.json())
+      .then(menu => {
+        const container = document.querySelector('#menu .info-row');
+        container.innerHTML = '';
+        menu.forEach(item => {
+          if (item.type === 'manual') {
+            container.innerHTML += `
+              <div class="card">
+                <h3 style="margin:0 0 6px 0;">${item.name}</h3>
+                <p class="muted">${item.description}</p>
+                <p><strong>${item.price}</strong></p>
+              </div>
+            `;
+          } else if (item.type === 'file' && item.menu_file) {
+            container.innerHTML += `
+              <div class="card">
+                <h3 style="margin:0 0 6px 0;">Menu Complet</h3>
+                <p class="muted">Téléchargez notre menu complet :</p>
+                <a href="${item.menu_file}" class="btn secondary" target="_blank">Voir le menu</a>
+              </div>
+            `;
+          }
+        });
+      });
+
+    // Load Carte
+    fetch('_data/carte/carte.json')
+      .then(response => response.json())
+      .then(data => {
+        document.querySelector('#carte .map iframe').src = data.map_url;
+      });
+
+    // Load Contact
+    fetch('_data/contact/contact.json')
+      .then(response => response.json())
+      .then(data => {
+        document.querySelector('#contact .card .muted').textContent = data.address;
+        document.querySelector('#contact a[href^="tel:"]').textContent = data.phone;
+        document.querySelector('#contact a[href^="mailto:"]').textContent = data.email;
+        document.querySelector('#contact a[href^="mailto:"]').href = `mailto:${data.email}`;
+        document.querySelector('#contact a[aria-label="Facebook"]').href = data.facebook || '#';
+        document.querySelector('#contact a[aria-label="Instagram"]').href = data.instagram || '#';
+      });
+  });
+</script>
+</head>
+<body>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html

@@ -1,0 +1,13 @@
+[
+  {
+    "type": "manual",
+    "name": "Pain de campagne croustillant",
+    "description": "Pain fait maison, cuit au feu de bois.",
+    "price": "4€",
+    "category": "Entrée"
+  },
+  {
+    "type": "file",
+    "menu_file": "../../images/menu-complet.pdf"
+  }
+]
