@@ -1,89 +1,14 @@
 backend:
-  name: github
-  repo: toulouse-pro/pro
+  name: git-gateway
   branch: main
-  auth_type: oauth
-  client_id: Ov23linPU29rZY80k9lz
-  base_url: https://api.github.com
-  auth_endpoint: https://github.com/login/oauth/authorize
 
-publish_mode: editorial_workflow
 media_folder: "images"
 public_folder: "/images"
 
 collections:
-  - name: "accueil"
-    label: "Accueil"
-    folder: "_data/accueil"
-    create: false
-    fields:
-      - { label: "Titre", name: "title", widget: "string" }
-      - { label: "Sous-titre", name: "subtitle", widget: "text" }
-      - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Bouton 1 Texte", name: "button1_text", widget: "string" }
-      - { label: "Bouton 1 Lien", name: "button1_link", widget: "string" }
-      - { label: "Bouton 2 Texte", name: "button2_text", widget: "string" }
-      - { label: "Bouton 2 Lien", name: "button2_link", widget: "string" }
-
-  - name: "avis"
-    label: "Avis Clients"
-    folder: "_data/avis"
+  - name: "pages"
+    label: "Pages"
+    folder: "_data/pages"
     create: true
     fields:
-      - { label: "Nom", name: "name", widget: "string" }
-      - { label: "Note", name: "rating", widget: "select", options: ["★★★★★", "★★★★☆", "★★★☆☆", "★★☆☆☆", "★☆☆☆☆"] }
-      - { label: "Commentaire", name: "comment", widget: "text" }
-
-  - name: "horaires"
-    label: "Horaires"
-    folder: "_data/horaires"
-    create: false
-    fields:
-      - { label: "Lundi", name: "monday", widget: "string" }
-      - { label: "Mardi", name: "tuesday", widget: "string" }
-      - { label: "Mercredi", name: "wednesday", widget: "string" }
-      - { label: "Jeudi", name: "thursday", widget: "string" }
-      - { label: "Vendredi", name: "friday", widget: "string" }
-      - { label: "Samedi", name: "saturday", widget: "string" }
-      - { label: "Dimanche", name: "sunday", widget: "string" }
-      - { label: "Note", name: "note", widget: "text", required: false }
-
-  - name: "photos"
-    label: "Photos"
-    folder: "_data/photos"
-    create: true
-    fields:
-      - { label: "Image", name: "image", widget: "image" }
-      - { label: "Légende", name: "caption", widget: "string", required: false }
-
-  - name: "menu"
-    label: "Menu"
-    folder: "_data/menu"
-    create: true
-    fields:
-      - { label: "Type", name: "type", widget: "select", options: ["manual", "file"] }
-      - { label: "Nom", name: "name", widget: "string", required: false }
-      - { label: "Description", name: "description", widget: "text", required: false }
-      - { label: "Prix", name: "price", widget: "string", required: false }
-      - { label: "Catégorie", name: "category", widget: "select", options: ["Entrée", "Plat", "Dessert", "Boisson"], required: false }
-      - { label: "Image", name: "image", widget: "image", required: false }
-      - { label: "Fichier Menu (PDF/JPG)", name: "menu_file", widget: "file", required: false }
-
-  - name: "carte"
-    label: "Carte"
-    folder: "_data/carte"
-    create: false
-    fields:
-      - { label: "Adresse", name: "address", widget: "string" }
-      - { label: "Google Maps Embed URL", name: "map_url", widget: "string" }
-
-  - name: "contact"
-    label: "Contact"
-    folder: "_data/contact"
-    create: false
-    fields:
-      - { label: "Adresse", name: "address", widget: "string" }
-      - { label: "Téléphone", name: "phone", widget: "string" }
-      - { label: "Email", name: "email", widget: "string" }
-      - { label: "Facebook", name: "facebook", widget: "string", required: false }
-      - { label: "Instagram", name: "instagram", widget: "string", required: false }
+      - { label: "Title", name: "title", widget: "string" }
